@@ -1,17 +1,15 @@
-name: PR Comment
-
+name: Post welcome comment
 on:
-  pull_request_target:
-    types: [opened, synchronize]
-
+  pull_request:
+    types: [opened]
+permissions:
+  pull-requests: write
 jobs:
-  add-comment:
-    runs-once: true
+  build:
+    name: Post welcome comment
+    runs-on: ubuntu-latest
     steps:
-      - name: Add a comment to the PR
-        uses: peter-evans/create-or-update-comment@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ github.event.pull_request.number }}
-          body: |
-            Thank you for your pull request! 🚀We will review it shortly.
+      - run: gh pr comment $PR_URL --body "Welcome to the repository!"
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PR_URL: ${{ github.event.pull_request.html_url }}
