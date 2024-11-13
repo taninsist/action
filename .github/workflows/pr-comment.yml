@@ -1,9 +1,10 @@
 name: PR Comment
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, synchronize]
-
+permissions:
+  pull-requests: write
 jobs:
   add-comment:
     runs-on: ubuntu-latest
