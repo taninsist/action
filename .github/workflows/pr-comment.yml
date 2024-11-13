@@ -6,8 +6,7 @@ on:
 
 jobs:
   add-comment:
-    runs-on: ubuntu-latest
-
+  
     steps:
     - name: Add a comment to the PR
       uses: peter-evans/create-or-update-comment@v2
