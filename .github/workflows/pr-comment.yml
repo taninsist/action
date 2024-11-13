@@ -15,5 +15,4 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         issue-number: ${{ github.event.pull_request.number }}
         body: |
-          Thank you for your pull request! 🚀
-          We will review it shortly.
+          Thank you for your pull request! 🚀We will review it shortly.
